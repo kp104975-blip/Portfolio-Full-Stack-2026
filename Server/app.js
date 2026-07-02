@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: true, // Later replace with your Vercel URL
+    origin: "https://portfolio-full-stack-2026.vercel.app", // Later replace with your Vercel URL
     credentials: true,
   })
 );
