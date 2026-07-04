@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
 function Navbar() {
@@ -45,8 +46,8 @@ function Navbar() {
                     </li>
                 </ul>
 
-                {/* Resume Button */}
-                <div className="hidden md:block">
+                {/* Resume & Admin Login Buttons */}
+                <div className="hidden md:flex items-center gap-4">
                     <a
                         href="/resume.pdf"
                         download
@@ -54,6 +55,12 @@ function Navbar() {
                     >
                         Resume
                     </a>
+                    <Link
+                        to="/admin/login"
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 hover:scale-105 transition transform text-white font-semibold shadow-lg"
+                    >
+                        Admin Login
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -119,7 +126,7 @@ function Navbar() {
                     </li>
                 </ul>
 
-                <div className="px-6 mt-6">
+                <div className="px-6 mt-6 flex flex-col gap-3">
                     <a
                         href="/resume.pdf"
                         download
@@ -127,6 +134,13 @@ function Navbar() {
                     >
                         Download Resume
                     </a>
+                    <Link
+                        to="/admin/login"
+                        onClick={() => setIsOpen(false)}
+                        className="block w-full text-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold shadow-lg"
+                    >
+                        Admin Login
+                    </Link>
                 </div>
             </div>
         </nav>
