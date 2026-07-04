@@ -22,10 +22,23 @@ app.use(
 // Middleware
 app.use(cookieParser());
 
+const allowedOrigins = [
+  "https://portfolio-full-stack-2026.vercel.app",
+  "http://localhost:5173"
+];
+
 app.use(
   cors({
-    origin: "https://portfolio-full-stack-2026.vercel.app", // Later replace with your Vercel URL
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 

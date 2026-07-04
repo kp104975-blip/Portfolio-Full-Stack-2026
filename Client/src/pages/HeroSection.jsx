@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../services/api'
+import { Link } from 'react-router-dom'
 import {
     FaGithub,
     FaLinkedin,
@@ -77,6 +78,13 @@ function HeroSection() {
                             >
                                 Download Resume
                             </a>
+
+                            <Link
+                                to="/admin/login"
+                                className="px-8 py-4 rounded-2xl bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 hover:border-cyan-400 transition duration-300 font-semibold"
+                            >
+                                Admin Login
+                            </Link>
                         </div>
 
                         {/* Social Links */}
