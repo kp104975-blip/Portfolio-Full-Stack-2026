@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import API from '../../services/api';
 import { FaUserCog, FaShieldAlt, FaKey } from 'react-icons/fa';
+import defaultAvatar from '../../assets/admin_avatar.png';
 
 function Settings() {
     const { admin, getProfile } = useAuth();
@@ -169,10 +170,15 @@ function Settings() {
                                     src={
                                         imageFile
                                             ? URL.createObjectURL(imageFile)
-                                            : admin?.image || "https://i.pravatar.cc/150?img=12"
+                                            : (admin?.image && !admin.image.includes("pravatar") && !admin.image.includes("default.jpg")
+                                                ? admin.image
+                                                : defaultAvatar)
                                     }
                                     alt="Admin Profile"
                                     className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        e.target.src = defaultAvatar;
+                                    }}
                                 />
                             </div>
                             <div className="flex-1 w-full">

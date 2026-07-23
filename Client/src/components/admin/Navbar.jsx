@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaBars, FaBell, FaSearch } from 'react-icons/fa'
 import { useAuth } from '../../context/AuthContext'
+import defaultAvatar from '../../assets/admin_avatar.png'
 
 function Navbar({ setSidebarOpen }) {
 
@@ -64,11 +65,15 @@ function Navbar({ setSidebarOpen }) {
                     {/* Profile Image */}
                     <img
                         src={
-                            admin?.image ||
-                            "https://i.pravatar.cc/150?img=12"
+                            admin?.image && !admin.image.includes("pravatar") && !admin.image.includes("default.jpg")
+                                ? admin.image
+                                : defaultAvatar
                         }
                         alt="Admin"
                         className="w-11 h-11 rounded-full border-2 border-cyan-400 object-cover"
+                        onError={(e) => {
+                            e.target.src = defaultAvatar;
+                        }}
                     />
 
                 </div>
